@@ -8,6 +8,24 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
+-- Project view
+vim.keymap.set('n', '<leader>pv', vim.cmd.Ex, { desc = 'Project view' })
+
+-- Yank
+vim.keymap.set('n', '<leader>y', '"+y', { desc = 'Yank to clipboard' })
+vim.keymap.set('v', '<leader>y', '"+y', { desc = 'Yank to clipboard' })
+vim.keymap.set('n', '<leader>Y', '"+Y', { desc = 'Yank line to clipboard' })
+-- Delete
+vim.keymap.set('n', '<leader>d', '"_d', { desc = 'Delete to void' })
+vim.keymap.set('v', '<leader>d', '"_d', { desc = 'Delete to void' })
+vim.keymap.set('n', '<leader>D', '"_D', { desc = 'Delete line to void' })
+-- Change
+vim.keymap.set('n', '<leader>c', '"_c', { desc = 'Change to void' })
+vim.keymap.set('v', '<leader>c', '"_c', { desc = 'Change to void' })
+vim.keymap.set('n', '<leader>C', '"_C', { desc = 'Change line to void' })
+-- Paste
+vim.keymap.set('v', '<leader>p', '_dP', { desc = 'Paste without overwriting clipboard' })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
