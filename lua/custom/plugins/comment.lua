@@ -14,11 +14,13 @@ return {
 
     local api = require 'Comment.api'
 
-    vim.keymap.set('n', '<C-_>', '<C-/>', { noremap = true, silent = true })
-
-    vim.keymap.set('n', '<C-/>', function()
+    vim.keymap.set({'n','x'}, '<C-_>', function()
       api.toggle.linewise.current()
-    end)
+    end, { silent = true })
+
+    vim.keymap.set({'n','x'}, '<C-/>', function()
+      api.toggle.linewise.current()
+    end, { silent = true })
 
     vim.keymap.set('x', '<C-/>', function()
       local esc = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
