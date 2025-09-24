@@ -220,6 +220,13 @@ return {
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
         --
+        verible = {
+          settings = {
+            format = {
+              '--rules_config=/home/yakultbottle/.config/verible/.verible-format.flags'
+            },
+          },
+        },
 
         lua_ls = {
           -- cmd = { ... },
