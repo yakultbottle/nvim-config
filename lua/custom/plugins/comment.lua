@@ -22,6 +22,13 @@ return {
       api.toggle.linewise.current()
     end, { silent = true })
 
+    vim.keymap.set('x', '<C-_>', function()
+      local esc = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
+      vim.api.nvim_feedkeys(esc, 'nx', false)
+      api.locked 'toggle.linewise'(vim.fn.visualmode())
+      vim.cmd 'normal! gv'
+    end)
+
     vim.keymap.set('x', '<C-/>', function()
       local esc = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
       vim.api.nvim_feedkeys(esc, 'nx', false)
