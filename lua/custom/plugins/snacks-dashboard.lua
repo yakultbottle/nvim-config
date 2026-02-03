@@ -9,6 +9,11 @@ art = [[
    ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝   ╚═════╝  ╚═════╝    ╚═╝      ╚═╝   ╚══════╝╚══════╝
 ]]
 
+local function open_project(path)
+  vim.cmd('cd ' .. path)
+  vim.cmd 'Neotree filesystem reveal current'
+end
+
 return {
   'folke/snacks.nvim',
   opts = {
@@ -19,7 +24,7 @@ return {
       sections = {
         { section = 'header', padding = 1 },
         { icon = ' ', title = 'Keymaps', section = 'keys', indent = 2, padding = 1 },
-        { icon = ' ', title = 'Projects', section = 'projects', indent = 2, padding = 1 },
+        { icon = ' ', title = 'Projects', section = 'projects', indent = 2, padding = 1, action = open_project },
         { icon = ' ', title = 'Recent Files', section = 'recent_files', indent = 2, padding = 1 },
         { section = 'startup' },
       },
