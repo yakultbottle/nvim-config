@@ -11,13 +11,27 @@ return {
   },
   lazy = false,
   keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    {
+      '<leader>pv',
+      '<cmd>Neotree filesystem toggle position=current dir=.<CR>',
+      desc = 'Project view (local cwd)',
+    },
+
+    {
+      '\\',
+      '<cmd>Neotree filesystem toggle<CR>',
+      desc = 'Project view (root)',
+      silent = true,
+    },
   },
   opts = {
     filesystem = {
+      close_if_last_window = true,
       window = {
         mappings = {
           ['\\'] = 'close_window',
+          ['h'] = 'navigate_up',
+          ['l'] = 'open',
         },
       },
     },
