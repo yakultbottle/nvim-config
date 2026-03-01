@@ -13,7 +13,7 @@ return {
   keys = {
     {
       '<leader>pv',
-      '<cmd>Neotree filesystem toggle position=current dir=.<CR>',
+      '<cmd>Neotree filesystem toggle position=current<CR>',
       desc = 'Project view (local cwd)',
     },
 
@@ -28,6 +28,7 @@ return {
     filesystem = {
       close_if_last_window = true,
       window = {
+        width = 30,
         mappings = {
           ['\\'] = 'close_window',
           ['h'] = 'navigate_up',

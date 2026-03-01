@@ -13,7 +13,7 @@ vim.keymap.set('n', '<leader>D', '"_D', { desc = 'Delete line to void' })
 vim.keymap.set('n', '<leader>c', '"_c', { desc = 'Change to void' })
 vim.keymap.set('v', '<leader>c', '"_c', { desc = 'Change to void' })
 vim.keymap.set('n', '<leader>C', '"_C', { desc = 'Change line to void' })
-vim.keymap.set('v', '<leader>p', '_dP', { desc = 'Paste without overwriting clipboard' })
+-- vim.keymap.set('v', '<leader>p', '_dP', { desc = 'Paste without overwriting clipboard' })
 
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set('t', '<C-[>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
