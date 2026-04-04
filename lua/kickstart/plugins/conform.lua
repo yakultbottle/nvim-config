@@ -32,8 +32,14 @@ return {
       formatters_by_ft = {
         lua = { 'stylua' },
         verilog = { 'verible' },
+        markdown = { 'prettier' },
+        python = { 'ruff_format' },
+        c = { 'clang-format' },
       },
       formatters = {
+        prettier = {
+          prepend_args = { '--prose-wrap', 'always', '--print-width', '80' },
+        },
       },
     },
   },
