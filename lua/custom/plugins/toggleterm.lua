@@ -17,9 +17,15 @@ return {
       direction = 'tab',
     }
 
-    vim.keymap.set('n', '<leader>g', function()
+    function _G.toggle_lazygit()
+      if not lazygit:is_open() then
+        lazygit:shutdown()
+      end
+
       lazygit:toggle()
-    end, { desc = 'Toggle Lazygit', noremap = true, silent = true })
+    end
+
+    vim.keymap.set('n', '<leader>g', _G.toggle_lazygit, { desc = 'Toggle Lazygit', noremap = true, silent = true })
   end,
 }
 -- vim: ts=2 sts=2 sw=2 et
