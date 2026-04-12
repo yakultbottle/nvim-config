@@ -1,6 +1,6 @@
 -- snacks-dashboard.nvim
 
-art = [[
+local art = [[
 ██╗   ██╗ █████╗ ██╗  ██╗██╗   ██╗██╗  ████████╗██████╗  ██████╗ ████████╗████████╗██╗     ███████╗
 ╚██╗ ██╔╝██╔══██╗██║ ██╔╝██║   ██║██║  ╚══██╔══╝██╔══██╗██╔═══██╗╚══██╔══╝╚══██╔══╝██║     ██╔════╝
  ╚████╔╝ ███████║█████╔╝ ██║   ██║██║     ██║   ██████╔╝██║   ██║   ██║      ██║   ██║     █████╗  
@@ -10,8 +10,14 @@ art = [[
 ]]
 
 local function open_project(path)
-  vim.cmd('cd ' .. path)
-  vim.cmd 'Neotree filesystem reveal current'
+  local dir = type(path) == 'table' and (path.file or path.dir) or path
+  if not dir or type(dir) ~= 'string' then
+    return
+  end
+
+  vim.cmd 'bd'
+  vim.api.nvim_set_current_dir(dir)
+  vim.cmd('Neotree filesystem toggle position=current dir=' .. vim.fn.fnameescape(dir))
 end
 
 local function open_neotree()
@@ -21,8 +27,11 @@ end
 
 return {
   'folke/snacks.nvim',
+  lazy = false,
   opts = {
+    picker = { enabled = true },
     dashboard = {
+      enabled = true,
       preset = {
         header = art,
         keys = {
@@ -43,6 +52,22 @@ return {
         { icon = ' ', title = 'Recent Files', section = 'recent_files', indent = 2, padding = 1 },
         { section = 'startup' },
       },
+    },
+  },
+  keys = {
+    {
+      '<leader>sp',
+      function()
+        Snacks.picker.projects {
+          confirm = function(picker, item)
+            picker:close()
+            if item and item.file then
+              open_project(item.file)
+            end
+          end,
+        }
+      end,
+      desc = 'Find Projects',
     },
   },
 }
