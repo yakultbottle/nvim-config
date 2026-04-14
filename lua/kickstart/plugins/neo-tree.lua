@@ -14,13 +14,13 @@ return {
     {
       '<leader>pv',
       '<cmd>Neotree filesystem toggle position=current<CR>',
-      desc = 'Project view (local cwd)',
+      desc = 'Project view pane',
     },
 
     {
       '\\',
-      '<cmd>Neotree filesystem toggle<CR>',
-      desc = 'Project view (root)',
+      '<cmd>Neotree filesystem toggle position=current<CR>',
+      desc = 'Project view pane',
       silent = true,
     },
   },
